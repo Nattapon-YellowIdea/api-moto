@@ -1,0 +1,26 @@
+#  Template NodeJS build
+
+#  This template allows you to validate your NodeJS code.
+#  The workflow allows running tests and code linting on the default branch.
+
+image: python:3.7.4-alpine3.10
+
+pipelines:
+  tags:
+    ecr-release-*:
+      - step:
+          services:
+            - docker
+          caches:
+            - pip
+          script:
+            - pip3 install awscli
+            - IMAGE="131263860679.dkr.ecr.ap-southeast-1.amazonaws.com/api-nt"
+            # - TAG=${BITBUCKET_BRANCH}
+            - TAG=${BITBUCKET_BRANCH:-$BITBUCKET_TAG}
+            - aws configure set aws_access_key_id "${AWS_ACCESS_KEY}"
+            - aws configure set aws_secret_access_key "${AWS_SECRET_ACCESS_KEY}"
+            - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/w6m9m1d8
+            - docker build -t api-nt .
+            # - docker tag yi/api-nt:latest $IMAGE:$TAG
+            - docker push 131263860679.dkr.ecr.ap-southeast-1.amazonaws.com/api-nt:master

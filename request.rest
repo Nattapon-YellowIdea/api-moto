@@ -1,0 +1,35 @@
+POST http://localhost:3002/api/bot-receive/end-agent-chat HTTP/1.1
+content-type: application/json
+Authorization: Bearer dada1859d03780f2899a8e02271a6ebc627aad1107ef5121ad13c22aa7a9aa48c61a10efcf5ecc2f0f63ae9199a49806c6dab7dcf78c4ebdc891387b7f6e9078
+
+{
+  "userId": "U614e5606060e778804fffe7a10ca34dd",
+  "agentId": "agent-01",
+  "agentEndDatetime": "2022-04-11T23:30:59"
+}
+
+###
+
+POST http://localhost:3002/api/bot-receive/agent-chat HTTP/1.1
+content-type: application/json
+
+{
+  "agentId": "agent-01",
+  "pushMessage": {
+    "to": "U8eea0419dbb6d88775d9f875f405bf5b",
+    "messages": [
+      {
+        "type": "text",
+        "text": "Hello world4"
+      }
+    ]
+  },
+  "agentChatDatetime": "2022-04-11T23:30:59"
+}
+
+###
+
+POST http://localhost:3000/api/user HTTP/1.1
+content-type: application/json
+
+{}
