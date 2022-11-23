@@ -12,6 +12,18 @@ const submitForm3 = async (payload) => {
   }
 };
 
+const checkSubmitted = async (payload) => {
+  try {
+    const result = Form3.findOne(payload);
+
+    return result;
+  } catch (err) {
+    captureException(payload);
+    throw err;
+  }
+};
+
 export default {
   submitForm3,
+  checkSubmitted,
 };

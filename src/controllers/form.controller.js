@@ -30,6 +30,25 @@ const submitForm3 = async (req, res) => {
   }
 };
 
+const checkSubmitted = async (req, res) => {
+  try {
+    const payload = req.body;
+
+    const result = await formService.checkSubmitted(payload);
+
+    if (!result) {
+      return res.status(200).json({ status: 200, message: 'Succesfully', data: null });
+    }
+
+    return res.status(200).json({ status: 200, message: 'Succesfully', data: result });
+  } catch (err) {
+    logger.error(err);
+    sentry.captureException(err);
+    return res.status(400).json({ status: 400, message: err.message });
+  }
+};
+
 export default {
   submitForm3,
+  checkSubmitted,
 };

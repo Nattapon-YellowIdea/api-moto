@@ -37,29 +37,37 @@ const router = express.Router();
  *                example: 'test@test.com'
  *                description: Customer's email.
  *              nissan_customer:
- *                type: boolean
- *                example: true
- *                description: true/false
+ *                type: string
+ *                example: Y
+ *                description: Y/N
  *              current_car_brand:
  *                type: string
  *                example: 'TOYOTA'
  *                description: Customer current car brand.
  *              interested_car:
- *                type: array
- *                example: []
- *                description: customer_title
+ *                type: string
+ *                example: 'TOYOTA'
+ *                description: ''
  *              buying_plan:
  *                type: string
  *                example: 'จองรถแล้ว'
  *                description: ''
  *              buying_factor:
- *                type: array
- *                example: []
+ *                type: string
+ *                example: 'เทคโนโลยีระบบความปลอดภัย,ดีไซน์ภายนอก,ดีไซน์ภายใน,บริการหลังการขาย,สมรรถนะของเครื่องยนต์,ประหยัดน้ำมัน / ไฟฟ้า'
  *                description: ''
- *              consent:
- *                type: boolean
- *                example: true
- *                description: true/false
+ *              consent_1:
+ *                type: string
+ *                example: Y
+ *                description: Y/N
+ *              consent_2:
+ *                type: string
+ *                example: Y
+ *                description: Y/N
+ *              consent_3:
+ *                type: string
+ *                example: Y
+ *                description: Y/N
  *    responses:
  *      '200':
  *        description: A successful response
@@ -86,6 +94,6 @@ router.post('/register', registerServiceController.registerForm);
  *      '200':
  *        description: A successful response
  */
- router.post('/check-register', registerServiceController.checkRegister);
+router.post('/check-register', registerServiceController.checkRegister);
 
 export default router;

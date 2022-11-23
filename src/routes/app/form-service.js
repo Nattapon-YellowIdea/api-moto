@@ -7,7 +7,7 @@ const router = express.Router();
  * @swagger
  * /api/form-service/form-3:
  *  post:
- *    tags: ["APP Form "]
+ *    tags: ["APP Form"]
  *    description: Form 3.
  *    requestBody:
  *      content:
@@ -108,5 +108,27 @@ const router = express.Router();
  *        description: A successful response
  */
 router.post('/form-3', formServiceController.submitForm3);
+
+/**
+ * @swagger
+ * /api/form-service/check-submitted:
+ *  post:
+ *    tags: ["APP Form"]
+ *    description: check user submit form already.
+ *    requestBody:
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              mid:
+ *                type: string
+ *                example: 'mid'
+ *                description: user's line mid
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ */
+router.post('/check-submitted', formServiceController.checkSubmitted);
 
 export default router;
